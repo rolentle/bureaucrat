@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140823194614) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "loan_logs", force: true do |t|
     t.integer  "lc_loan_id"
     t.integer  "days_since_last_payment"
