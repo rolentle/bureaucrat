@@ -6,6 +6,7 @@ class EtlSecondaryMarket
   end
 
   def execute
+    puts "sending data to the DataLoader"
     DataLoader.execute data
   end
 
@@ -14,7 +15,10 @@ class EtlSecondaryMarket
   end
 
   def fetch_data
-    DataFetcher.new(source_url).body
+    puts 'sending web request'
+    body = DataFetcher.new(source_url).body
+    puts "body received: #{body[0..100]}"
+    body
   end
 
   def source_url

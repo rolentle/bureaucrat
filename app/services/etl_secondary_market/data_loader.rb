@@ -4,6 +4,7 @@ class EtlSecondaryMarket::DataLoader
   end
 
   def initialize(data)
+    puts "parseing and loading the data"
     parse_n_load data
   end
 
@@ -14,23 +15,22 @@ class EtlSecondaryMarket::DataLoader
   end
 
   def map_n_save(attributes)
-    ModelMapper.new(attributes).save
+    ModelMapper.map_n_save(attributes)
   end
 
   class ModelMapper
+    def self.map_n_save(attrs)
+      new(attrs)
+    end
+
     def initialize(attr)
       map_to_model attr
     end
 
-    def save
-      [@order, @note, @loan,@loan_log].each(&:save)
-    end
-
     def map_to_model(attr)
-      @order = OrderMapper.new attr
-      @note  = NoteMapper.new  attr
-      @loan  = LoanMapper.new  attr
-      @loan_log = LoanLogMapper.new attr
+      [OrderMapper, NoteMapper, LoanMapper, LoanLogMapper].each do |klass|
+        Resque.enqueue(klass, attr)
+      end
     end
   end
 end

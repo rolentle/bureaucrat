@@ -1,10 +1,11 @@
 class EtlSecondaryMarket::DataFetcher
   def initialize(url)
-    uri = URI(url)
-    @response = Net::HTTP.get uri
+    puts "curling"
+    @response = Curl.get(url)
+    puts "curling finished"
   end
 
   def body
-    @response
+    @response.body
   end
 end

@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'pg'
+gem 'curb'
+gem 'resque'
 
 group :test do
   gem 'webmock'
@@ -32,6 +34,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
+  gem 'pry'
 end
 
 # Use ActiveModel has_secure_password

@@ -1,4 +1,5 @@
 class OrderMapper < BaseMapper
+  @queue = :data_fetch
   def filter(attr)
     {
       lc_order_id: attr["OrderId"],

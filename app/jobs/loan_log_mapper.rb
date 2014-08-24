@@ -1,4 +1,5 @@
 class LoanLogMapper < BaseMapper
+  @queue = :data_fetch
   def filter(attr)
     {
       lc_loan_id: attr["LoanId"],

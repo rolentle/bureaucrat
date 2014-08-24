@@ -1,5 +1,12 @@
 class BaseMapper
   attr_reader :attrs
+
+  def self.perform(attrs)
+    puts "starting #{self} job with #{attrs}"
+    new(attrs).save
+    puts "#{self} job finished"
+  end
+
   def initialize(attrs)
     @attrs = filter attrs
   end
