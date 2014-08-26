@@ -25,10 +25,11 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'pg'
-gem 'curb'
+gem 'faraday'
 gem 'resque'
 
 group :test do
+  gem 'mock_redis'
   gem 'webmock'
 end
 

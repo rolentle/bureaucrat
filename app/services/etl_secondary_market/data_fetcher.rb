@@ -1,11 +1,13 @@
 class EtlSecondaryMarket::DataFetcher
   def initialize(url)
-    puts "curling"
-    @response = Curl.get(url)
-    puts "curling finished"
+    @connection = Faraday::Connection.new( 'https://resources.lendingclub.com', :ssl => {
+      :ca_file => OpenSSL::X509::DEFAULT_CERT_FILE,
+      verify: false
+    })
   end
 
+
   def body
-    @response.body
+    @connection.get("/SecondaryMarketAllNotes.csv").body
   end
 end
