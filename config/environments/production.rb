@@ -1,3 +1,6 @@
+uri = URI.parse(ENV["REDISTOGO_URL"] || "redis://localhost:6379/" )
+Resque.redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
