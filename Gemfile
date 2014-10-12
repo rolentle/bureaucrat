@@ -31,6 +31,8 @@ gem 'resque'
 group :test do
   gem 'mock_redis'
   gem 'webmock'
+  gem 'factory_girl_rails'
+  gem 'capybara'
 end
 
 group :development, :test do

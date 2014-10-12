@@ -4,7 +4,6 @@ class EtlSecondaryMarket::DataLoader
   end
 
   def initialize(data)
-    puts "parseing and loading the data"
     parse_n_load data
   end
 

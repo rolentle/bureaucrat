@@ -1,6 +1,8 @@
 require 'resque/server'
 Rails.application.routes.draw do
   mount Resque::Server.new, at: "/resque"
+
+  resources :loans, only: [:index, :show]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

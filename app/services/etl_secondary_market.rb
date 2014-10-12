@@ -6,7 +6,6 @@ class EtlSecondaryMarket
   end
 
   def execute
-    puts "sending data to the DataLoader"
     DataLoader.execute data
   end
 
