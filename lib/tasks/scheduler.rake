@@ -1,7 +1,7 @@
 task :fetch_data => :environment do
-  puts 'starting to fetch data'
-  uri = URI.parse(ENV["REDISTOGO_URL"] || "redis://localhost:6379/" )
-  REDIS = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
+  start_time = Time.now
+  puts "starting to fetch data @ #{start_time}"
   EtlSecondaryMarket.execute
-  puts 'data fetched'
+  end_time = Time.now
+  puts "data fetched @ #{end_time}"
 end

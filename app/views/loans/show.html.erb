@@ -1,0 +1,7 @@
+<h1> Loan ID</h1>
+<%= @loan.lc_loan_id %>
+
+<h2>Notes</h2>
+<% @loan.notes.each do |note| %>
+  note: <%= note.lc_note_id %>
+<% end %>

@@ -1,8 +1,14 @@
 require 'webmock/rspec'
 require 'mock_redis'
 require 'resque'
+require 'factory_girl'
 
 RSpec.configure do |config|
+  config.include FactoryGirl::Syntax::Methods
+  config.before(:suite) do
+    FactoryGirl.lint
+  end
+
   # These two settings work together to allow you to limit a spec run
   # to individual examples or groups you care about by tagging them with
   # `:focus` metadata. When nothing is tagged with `:focus`, all examples
